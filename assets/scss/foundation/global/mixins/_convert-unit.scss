@@ -1,0 +1,46 @@
+// ==========================================================================
+// mixin 
+// updated --- 2022/10/11 18:18:16
+// ==========================================================================
+@use "sass:math";
+@use "../variables/breakpoint" as var;
+@use "../variables/font" as font;
+
+	/* ------------------------------------------------------------
+	 * @mixin：pxrem($px,$basepx)
+	 * 
+	 * px => rem
+	 * base : 16px;
+	--------------------------------------------------------------*/
+	@function pxrem($px,$basepx:font.$base-font-size){
+		@return math.div($px, $basepx) * 1rem;
+	}
+
+
+	/* ------------------------------------------------------------
+	 * @mixin：pxvw($px,$basepx)
+	 * 
+	 * px => vw
+	 * base : 750px;
+	--------------------------------------------------------------*/
+	/// Remove the unit of a length
+	@function strip-unit($number) {
+		@if type-of($number) == 'number' and not unitless($number) {
+			@return math.div($number, $number * 0 + 1);
+		}
+		@return $number;
+	}
+	
+	@function pxvw($px,$basepx:var.$sp-design-size){
+		@return math.div($px, strip-unit($basepx)) * 100vw;
+	}
+	
+	
+	/* ------------------------------------------------------------
+	 * @mixin：pxper($px,$basepx)
+	 * 
+	 * px => per
+	--------------------------------------------------------------*/
+	@function pxper($px,$parent_px){
+		@return math.div($px, $parent-px) * 100%;
+	}

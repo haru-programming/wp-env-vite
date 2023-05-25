@@ -1,0 +1,25 @@
+// ==========================================================================
+// mixin updated --- 2023/01/17 01:03:03
+// ==========================================================================
+
+  // -----------------------------------------------------------------
+  // Safari ちらつき防止 ※改善の余地あり
+  // -----------------------------------------------------------------
+  //https://qiita.com/gurigurico/items/d23abc4ae6efdf4aa3c4
+  @mixin remove-flicker() {
+    transform: translateZ(0);
+    -webkit-perspective: 1000;
+    -webkit-backface-visibility: hidden;
+    overflow: hidden;
+  }
+
+
+  // -----------------------------------------------------------------
+  // str-split
+  // -----------------------------------------------------------------
+  @function split-str($string, $separator) {
+    $index : str-index($string,  $separator);
+    $str-1 : str-slice($string, 1, $index - 1);
+    $str-2 : str-slice($string, $index + 1);
+    @return $str-1 $str-2;
+  }

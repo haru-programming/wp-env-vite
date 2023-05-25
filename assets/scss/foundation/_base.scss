@@ -1,0 +1,131 @@
+// ==========================================================================
+// base
+// ==========================================================================
+@use "./global";
+
+  // -----------------------------------------------------------------
+  // html
+  // -----------------------------------------------------------------
+  html{
+
+    scroll-behavior: smooth;
+    // -webkit-font-smoothing: antialiased;
+    // &:focus-within{
+    //   scroll-behavior: smooth;
+    // }
+
+    // position: fixed;top: 0;left: 0;
+    // width: 100%;
+    // &.is-loaded{
+    //   position: static;top: auto;left: auto;
+    // }
+
+    height: 100%; // ページの情報量に関わらずfooterを下部に
+    background: global.$color-white;color: global.$color-black;
+
+    &.ua-windows_nt{
+      overflow-y: scroll;
+    }
+
+    // base font-size:16px;
+    font-size: 100%;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+
+    // font smoothing
+    &.ua-mac_os_x{
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+  }
+
+
+  // -----------------------------------------------------------------
+  // body
+  // -----------------------------------------------------------------
+  body {
+
+    // grid:ページの情報量に関わらずfooterを下部に
+    // display: grid;
+    // grid-template-rows: 1fr auto;
+
+    // ページの情報量に関わらずfooterを下部に
+    min-height: 100%;
+
+    // 縦罫線グリッド用
+    position: relative;
+
+
+    /* ------------------------------------------------------------
+     * base font
+    --------------------------------------------------------------*/
+    font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    font-weight: global.$weight-bold;font-style: normal;
+    line-height: 1.94;
+    //font-feature-settings: "palt";font-kerning: auto;
+
+
+    /* ------------------------------------------------------------
+    /* base font-size:16px;
+    --------------------------------------------------------------*/
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+
+    // font smoothing
+    &.ua-mac_os_x{
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+
+    /* ------------------------------------------------------------
+    /* resize-animation-stopper
+    --------------------------------------------------------------*/
+    &.resize-animation-stopper * {
+      animation: none !important;
+      transition: none !important;
+      &:before,&:after{
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+
+
+    /* ------------------------------------------------------------
+    /* svg symbol
+    --------------------------------------------------------------*/
+    .svg-symbol{
+      display: none;
+    }
+
+
+    // -------------------------------------------------------------
+    // lg：Desktop
+    // -------------------------------------------------------------
+    @include global.media-breakpoint-up(md) {
+      .is-sp,.is-md{
+        display: none !important;
+      }
+    }
+
+
+    // -------------------------------------------------------------
+    // md：Medium devices
+    // -------------------------------------------------------------
+    @include global.media-breakpoint-only(md) {
+      .is-md{
+        display: block !important;
+      }
+    }
+
+
+    // -------------------------------------------------------------
+    // sm：Mobile
+    // -------------------------------------------------------------
+    @include global.media-breakpoint-down(md) {
+      .is-pc,.is-md{
+        display: none !important;
+      }
+    }
+  }

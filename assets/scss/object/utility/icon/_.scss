@@ -1,0 +1,67 @@
+// ==========================================================================
+// u-icon
+// ==========================================================================
+@use "../../../foundation/global";
+@use "../../../foundation/font";
+
+  // -----------------------------------------------------------------
+  // u-icon
+  // -----------------------------------------------------------------
+  .u-icon{
+
+    display: block;
+    width: fit-content;
+    @include global.box-padding(
+      ( tb: 5,lr: 6 ),(),
+      ( tb: 5,lr: 6 )
+    );
+    color: global.$color-black;background-color: global.$bgcolor-gray;
+    .u-icon__text{
+      @include font.yugo(
+        ( text: 11, leading-trim: 1 ),(),
+        ( text: 11, leading-trim: 1 )
+      );
+    }
+
+
+    &.u-icon--free{
+
+      @include global.box-padding(
+        ( tb: 6,lr: 10 ),(),
+        ( tb: 6,lr: 10 )
+      );
+      @include global.box-margin(
+        ( right: 5 ),(),
+        ( right: 5 )
+      );
+      color: global.$color-white;background-color: global.$color-blue;
+      .u-icon__text{
+        @include font.yugo(
+          ( text: 14, leading-trim: 1 ),(),
+          ( text: 12, leading-trim: 1 )
+        );
+      }
+    }
+
+    // -------------------------------------------------------------
+    // lg：Desktop
+    // -------------------------------------------------------------
+    @include global.media-breakpoint-up(md) {
+      border-radius: global.pxrem(6);
+    }
+
+
+    // -------------------------------------------------------------
+    // md：Medium devices
+    // -------------------------------------------------------------
+    @include global.media-breakpoint-only(md) {
+    }
+
+
+    // -------------------------------------------------------------
+    // sm：Mobile
+    // -------------------------------------------------------------
+    @include global.media-breakpoint-down(md) {
+      border-radius: global.pxvw(6);
+    }
+  }

@@ -1,0 +1,136 @@
+// ==========================================================================
+// u-box
+// ==========================================================================
+@use "../../../foundation/global";
+
+  // -----------------------------------------------------------------
+  // u-padding ※ 簡易化のためにboxを省略
+  // -----------------------------------------------------------------
+  // .u-padding{
+  //   @include global.box-padding(
+  //     (top: 40), (),
+  //     (top: 30)
+  //   )
+  // }
+
+  // .u-padding-lr{
+  //   width: fit-content;
+  //   padding-left: auto;padding-right: auto;
+  // }
+
+  // .u-padding-xxs{
+  //   @include global.box-padding(
+  //     (top: 32), (),
+  //     (top: 22)
+  //   )
+  // }
+  
+  // .u-padding-xs{
+  //   @include global.box-padding(
+  //     (top: 32), (),
+  //     (top: 28)
+  //   )
+  // }
+
+  // .u-padding-s{
+  //   @include global.box-padding(
+  //     (top: 32), (),
+  //     (top: 32)
+  //   )
+  // }
+
+  // .u-padding-sm{
+  //   @include global.box-padding(
+  //     (top: 50), (),
+  //     (top: 40)
+  //   )
+  // }
+  
+  // .u-padding-m{
+  //   @include global.box-padding(
+  //     (top: 60), (),
+  //     (top: 35)
+  //   )
+  // }
+
+  // .u-padding-l{
+  //   @include global.box-padding(
+  //     (top: 70), (),
+  //     (top: 60)
+  //   )
+  // }
+
+  // .u-padding-sl{
+  //   @include global.box-padding(
+  //     (top: 70), (),
+  //     (top: 55)
+  //   )
+  // }
+
+  // .u-padding-sp-s{
+  //   @include global.box-padding(
+  //     (), (),
+  //     (top: 38)
+  //   )
+  // }
+
+  // .u-padding-sp-m{
+  //   @include global.box-padding(
+  //     (), (),
+  //     (top: 48)
+  //   )
+  // }
+
+  // .u-padding-sp-l{
+  //   @include global.box-padding(
+  //     (), (),
+  //     (top: 56)
+  //   )
+  // }
+
+
+  // -------------------------------------------------------------
+  // lg：Desktop
+  // -------------------------------------------------------------
+  @include global.media-breakpoint-up(md) {
+    .lg{
+      /* 100 */
+      &\:u-padding-\[100\]{
+        padding-top: global.pxrem(100);
+      }
+    }
+  }
+
+
+  // -------------------------------------------------------------
+  // md：Medium devices
+  // -------------------------------------------------------------
+  @include global.media-breakpoint-only(md) {
+
+    .md{
+      /* 100 */
+      // &\:u-padding-\[100\]{
+      //   padding-top: global.pxrem(100);
+      // }
+    }
+
+    .lg{
+      /* 100 */
+      &\:u-padding-\[100\]{
+        padding-top: global.pxvw(100,map-get(global.$grid-breakpoints,lg));
+      }
+    }
+  }
+
+
+  // -------------------------------------------------------------
+  // sm：Mobile
+  // -------------------------------------------------------------
+  @include global.media-breakpoint-down(md) {
+    .sm{
+      /* 200 */
+      &\:u-padding-\[200\]{
+        padding-top: global.pxvw(200);
+      }
+    }
+  }

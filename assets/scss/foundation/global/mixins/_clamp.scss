@@ -1,0 +1,28 @@
+// ==========================================================================
+// mixin 
+// updated --- 2023/02/04 20:56:24
+// ==========================================================================
+@use "sass:math";
+@use "../variables/breakpoint" as var;
+@use "../variables/font" as font;
+
+	/* ------------------------------------------------------------
+	 * @mixin：clamp-value($min,$max,$vmin,$vmax)
+   * ref：https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/
+	 * 
+	 * $min：最小サイズ〜$max：最大サイズ
+	 * $vmin：viewport最小〜$vmax：viewport最大
+	--------------------------------------------------------------*/
+	@function clamp-value($min,$max,$vmin,$vmax){
+    $min-num: math.div($min, font.$base-font-size);
+    $max-num: math.div($max, font.$base-font-size);
+    $min-viewport: math.div($vmin, font.$base-font-size);
+    $max-viewport: math.div($vmax, font.$base-font-size);
+
+    $slope: math.div(($max-num - $min-num), ($max-viewport - $min-viewport));
+
+    $calc-rem: ($min-viewport * -1 * $slope + $min-num) * 1rem;
+    $calc-vw: ($slope * 100) * 1vw;
+
+    @return clamp($min-num * 1rem, $calc-rem + $calc-vw, $max-num * 1rem);
+  }

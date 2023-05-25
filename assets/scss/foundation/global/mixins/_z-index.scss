@@ -1,0 +1,48 @@
+// ==========================================================================
+// mixin 
+// updated --- 2023/01/17 01:00:40
+// ==========================================================================
+@use "../variables/z-index" as var;
+
+  /* ------------------------------------------------------------
+   * @function：z
+   * 
+   * z-index 管理
+   * https://qiita.com/kojika17/items/b4694e3afe0da97e6335
+  --------------------------------------------------------------*/
+  @function z($options...) {
+    $option-length: length($options);
+    $point: 1;
+    $is-index: 1;
+
+    $temp-map: var.$z-map;
+    $get-key: nth($options, $option-length);
+
+    @if($option-length > 1) {
+      @each $option in $options {
+        @if($option != $get-key) {
+          $temp-map: map-get($temp-map, $option);
+        }
+      }
+    }
+
+    @if(not var.$z-map-reverse) {
+      $get-value: map-get($temp-map, $get-key);
+      $is-index: index($temp-map, ($get-key $get-value));
+    } @else {
+      $counter: 1;
+      @if (var.$z-map-reverse) {
+        $counter: length($temp-map);
+        $point: -1;
+      }
+
+      @each $map-key, $map-value in $temp-map {
+        @if $map-key == $get-key {
+          $is-index: $counter;
+        }
+        $counter: $counter + $point;
+      }
+    }
+
+    @return $is-index;
+  }

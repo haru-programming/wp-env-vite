@@ -1,0 +1,395 @@
+// ==========================================================================
+// mixin 
+// updated --- 2023/01/18 15:15:45
+// ==========================================================================
+@use "sass:meta";
+@use "../variables/breakpoint" as breakpoint;
+@use "./breakpoints" as breakpoints;
+@use "./convert-unit" as convert-unit;
+
+  /* ------------------------------------------------------------
+   * @mixin：box-margin
+  --------------------------------------------------------------*/
+  @mixin box-margin($lg:(),$md:(),$sm:()) {
+    // -------------------------------------------------------------
+    // lg：Desktop
+    // -------------------------------------------------------------
+    @if(length($lg)>0){
+      @include breakpoints.media-breakpoint-up(md) {
+        @if type-of($lg) == 'map' {
+          @each $key, $value in $lg {
+            @if $key == 'all' {
+              @if type-of($value) == 'number' {
+                margin: convert-unit.pxrem($value);
+              }
+              @else if type-of($value) == 'string' {
+                margin: $value;
+              }
+            }
+            @else if $key == 'lr' {
+              @if type-of($value) == 'number' {
+                margin-left: convert-unit.pxrem($value);
+                margin-right: convert-unit.pxrem($value);
+              }
+              @else if type-of($value) == 'string' {
+                margin-left: $value;
+                margin-right: $value;
+              }
+            }
+            @else if $key == 'tb' {
+              @if type-of($value) == 'number' {
+                margin-top: convert-unit.pxrem($value);
+                margin-bottom: convert-unit.pxrem($value);
+              }
+              @else if type-of($value) == 'string' {
+                margin-top: $value;
+                margin-bottom: $value;
+              }
+            }
+            @else{
+              @if type-of($value) == 'number' {
+                margin-#{$key}: convert-unit.pxrem($value);
+              }
+              @else if type-of($value) == 'string' {
+                margin-#{$key}: $value;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // -------------------------------------------------------------
+    // md：Medium devices
+    // -------------------------------------------------------------
+    @if($md == true){
+      @include breakpoints.media-breakpoint-only(md) {
+        @if type-of($lg) == 'map' {
+          @each $key, $value in $lg {
+            @if $key == 'all' {
+              @if type-of($value) == 'number' {
+                margin: convert-unit.pxvw($value,map-get(breakpoint.$grid-breakpoints,lg));
+              }
+              @else if type-of($value) == 'string' {
+                //margin: $value;
+              }
+            }
+            @else if $key == 'lr' {
+              @if type-of($value) == 'number' {
+                margin-left: convert-unit.pxvw($value,map-get(breakpoint.$grid-breakpoints,lg));
+                margin-right: convert-unit.pxvw($value,map-get(breakpoint.$grid-breakpoints,lg));
+              }
+              @else if type-of($value) == 'string' {
+                //margin-left: $value;
+                //margin-right: $value;
+              }
+            }
+            @else if $key == 'tb' {
+              @if type-of($value) == 'number' {
+                margin-top: convert-unit.pxvw($value,map-get(breakpoint.$grid-breakpoints,lg));
+                margin-bottom: convert-unit.pxvw($value,map-get(breakpoint.$grid-breakpoints,lg));
+              }
+              @else if type-of($value) == 'string' {
+                //margin-top: $value;
+                //margin-bottom: $value;
+              }
+            }
+            @else{
+              @if type-of($value) == 'number' {
+                margin-#{$key}: convert-unit.pxvw($value,map-get(breakpoint.$grid-breakpoints,lg));
+              }
+              @else if type-of($value) == 'string' {
+                //margin-#{$key}: $value;
+              }
+            }
+          }
+        }
+      }
+    }
+    @else if(length($md)>0){
+      @include breakpoints.media-breakpoint-only(md) {
+        @if type-of($md) == 'map' {
+          @each $key, $value in $md {
+            @if $key == 'all' {
+              @if type-of($value) == 'number' {
+                margin: convert-unit.pxvw($value,map-get(breakpoint.$grid-breakpoints,lg));
+              }
+              @else if type-of($value) == 'string' {
+                //margin: $value;
+              }
+            }
+            @else if $key == 'lr' {
+              @if type-of($value) == 'number' {
+                margin-left: convert-unit.pxvw($value,map-get(breakpoint.$grid-breakpoints,lg));
+                margin-right: convert-unit.pxvw($value,map-get(breakpoint.$grid-breakpoints,lg));
+              }
+              @else if type-of($value) == 'string' {
+                //margin-left: $value;
+                //margin-right: $value;
+              }
+            }
+            @else if $key == 'tb' {
+              @if type-of($value) == 'number' {
+                margin-top: convert-unit.pxvw($value,map-get(breakpoint.$grid-breakpoints,lg));
+                margin-bottom: convert-unit.pxvw($value,map-get(breakpoint.$grid-breakpoints,lg));
+              }
+              @else if type-of($value) == 'string' {
+                //margin-top: $value;
+                //margin-bottom: $value;
+              }
+            }
+            @else{
+              @if type-of($value) == 'number' {
+                margin-#{$key}: convert-unit.pxvw($value,map-get(breakpoint.$grid-breakpoints,lg));
+              }
+              @else if type-of($value) == 'string' {
+                //margin-#{$key}: $value;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // -------------------------------------------------------------
+    // sm：Mobile
+    // -------------------------------------------------------------
+    @if(length($sm)>0){
+      @include breakpoints.media-breakpoint-down(md) {
+        @if type-of($sm) == 'map' {
+          @each $key, $value in $sm {
+            @if $key == 'all' {
+              @if type-of($value) == 'number' {
+                margin: convert-unit.pxvw($value);
+              }
+              @else if type-of($value) == 'string' {
+                margin: $value;
+              }
+            }
+            @else if $key == 'lr' {
+              @if type-of($value) == 'number' {
+                margin-left: convert-unit.pxvw($value);
+                margin-right: convert-unit.pxvw($value);
+              }
+              @else if type-of($value) == 'string' {
+                margin-left: $value;
+                margin-right: $value;
+              }
+            }
+            @else if $key == 'tb' {
+              @if type-of($value) == 'number' {
+                margin-top: convert-unit.pxvw($value);
+                margin-bottom: convert-unit.pxvw($value);
+              }
+              @else if type-of($value) == 'string' {
+                margin-top: $value;
+                margin-bottom: $value;
+              }
+            }
+            @else{
+              @if type-of($value) == 'number' {
+                margin-#{$key}: convert-unit.pxvw($value);
+              }
+              @else if type-of($value) == 'string' {
+                margin-#{$key}: $value;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+  /* ------------------------------------------------------------
+   * @mixin：box-padding
+  --------------------------------------------------------------*/
+  @mixin box-padding($lg:(),$md:(),$sm:()) {
+    // -------------------------------------------------------------
+    // lg：Desktop
+    // -------------------------------------------------------------
+    @if(length($lg)>0){
+      @include breakpoints.media-breakpoint-up(md) {
+        @if type-of($lg) == 'map' {
+          @each $key, $value in $lg {
+            @if $key == 'all' {
+              @if type-of($value) == 'number' {
+                padding: convert-unit.pxrem($value);
+              }
+              @else if type-of($value) == 'string' {
+                padding: $value;
+              }
+            }
+            @else if $key == 'lr' {
+              @if type-of($value) == 'number' {
+                padding-left: convert-unit.pxrem($value);
+                padding-right: convert-unit.pxrem($value);
+              }
+              @else if type-of($value) == 'string' {
+                padding-left: $value;
+                padding-right: $value;
+              }
+            }
+            @else if $key == 'tb' {
+              @if type-of($value) == 'number' {
+                padding-top: convert-unit.pxrem($value);
+                padding-bottom: convert-unit.pxrem($value);
+              }
+              @else if type-of($value) == 'string' {
+                padding-top: $value;
+                padding-bottom: $value;
+              }
+            }
+            @else{
+              @if type-of($value) == 'number' {
+                padding-#{$key}: convert-unit.pxrem($value);
+              }
+              @else if type-of($value) == 'string' {
+                padding-#{$key}: $value;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // -------------------------------------------------------------
+    // md：Medium devices
+    // -------------------------------------------------------------
+    @if($md == true){
+      @include breakpoints.media-breakpoint-only(md) {
+        @if type-of($lg) == 'map' {
+          @each $key, $value in $lg {
+            @if $key == 'all' {
+              @if type-of($value) == 'number' {
+                padding: convert-unit.pxvw($value,map-get(breakpoint.$grid-breakpoints,lg));
+              }
+              @else if type-of($value) == 'string' {
+                //padding: $value;
+              }
+            }
+            @else if $key == 'lr' {
+              @if type-of($value) == 'number' {
+                padding-left: convert-unit.pxvw($value,map-get(breakpoint.$grid-breakpoints,lg));
+                padding-right: convert-unit.pxvw($value,map-get(breakpoint.$grid-breakpoints,lg));
+              }
+              @else if type-of($value) == 'string' {
+                //padding-left: $value;
+                //padding-right: $value;
+              }
+            }
+            @else if $key == 'tb' {
+              @if type-of($value) == 'number' {
+                padding-top: convert-unit.pxvw($value,map-get(breakpoint.$grid-breakpoints,lg));
+                padding-bottom: convert-unit.pxvw($value,map-get(breakpoint.$grid-breakpoints,lg));
+              }
+              @else if type-of($value) == 'string' {
+                //padding-top: $value;
+                //padding-bottom: $value;
+              }
+            }
+            @else{
+              @if type-of($value) == 'number' {
+                padding-#{$key}: convert-unit.pxvw($value,map-get(breakpoint.$grid-breakpoints,lg));
+              }
+              @else if type-of($value) == 'string' {
+                //padding-#{$key}: $value;
+              }
+            }
+          }
+        }
+      }
+    }
+    @else if(length($md)>0){
+      @include breakpoints.media-breakpoint-only(md) {
+        @if type-of($md) == 'map' {
+          @each $key, $value in $md {
+            @if $key == 'all' {
+              @if type-of($value) == 'number' {
+                padding: convert-unit.pxvw($value,map-get(breakpoint.$grid-breakpoints,lg));
+              }
+              @else if type-of($value) == 'string' {
+                //padding: $value;
+              }
+            }
+            @else if $key == 'lr' {
+              @if type-of($value) == 'number' {
+                padding-left: convert-unit.pxvw($value,map-get(breakpoint.$grid-breakpoints,lg));
+                padding-right: convert-unit.pxvw($value,map-get(breakpoint.$grid-breakpoints,lg));
+              }
+              @else if type-of($value) == 'string' {
+                //padding-left: $value;
+                //padding-right: $value;
+              }
+            }
+            @else if $key == 'tb' {
+              @if type-of($value) == 'number' {
+                padding-top: convert-unit.pxvw($value,map-get(breakpoint.$grid-breakpoints,lg));
+                padding-bottom: convert-unit.pxvw($value,map-get(breakpoint.$grid-breakpoints,lg));
+              }
+              @else if type-of($value) == 'string' {
+                //padding-top: $value;
+                //padding-bottom: $value;
+              }
+            }
+            @else{
+              @if type-of($value) == 'number' {
+                padding-#{$key}: convert-unit.pxvw($value,map-get(breakpoint.$grid-breakpoints,lg));
+              }
+              @else if type-of($value) == 'string' {
+                //padding-#{$key}: $value;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // -------------------------------------------------------------
+    // sm：Mobile
+    // -------------------------------------------------------------
+    @if(length($sm)>0){
+      @include breakpoints.media-breakpoint-down(md) {
+        @if type-of($sm) == 'map' {
+          @each $key, $value in $sm {
+            @if $key == 'all' {
+              @if type-of($value) == 'number' {
+                padding: convert-unit.pxvw($value);
+              }
+              @else if type-of($value) == 'string' {
+                padding: $value;
+              }
+            }
+            @else if $key == 'lr' {
+              @if type-of($value) == 'number' {
+                padding-left: convert-unit.pxvw($value);
+                padding-right: convert-unit.pxvw($value);
+              }
+              @else if type-of($value) == 'string' {
+                padding-left: $value;
+                padding-right: $value;
+              }
+            }
+            @else if $key == 'tb' {
+              @if type-of($value) == 'number' {
+                padding-top: convert-unit.pxvw($value);
+                padding-bottom: convert-unit.pxvw($value);
+              }
+              @else if type-of($value) == 'string' {
+                padding-top: $value;
+                padding-bottom: $value;
+              }
+            }
+            @else{
+              @if type-of($value) == 'number' {
+                padding-#{$key}: convert-unit.pxvw($value);
+              }
+              @else if type-of($value) == 'string' {
+                padding-#{$key}: $value;
+              }
+            }
+          }
+        }
+      }
+    }
+  }

@@ -1,0 +1,63 @@
+// ==========================================================================
+// mixin 
+// updated --- 2023/01/17 01:00:50
+// ==========================================================================
+@use "sass:math";
+
+  /* ------------------------------------------------------------
+   * @mixin：triangle
+   * 
+   * 第1引数に方向を指定。上向き(upward)、右向き(rightward)、下向き(downward)、左向き(leftward)、左上(upper-left)、右上(upper-right)、右下(lower-right)、左下(lower-left)の８方向から選択します
+   * 第2引数に三角形の横幅を指定します
+   * 第3引数に三角形の縦幅を指定します
+   * 第4引数に三角形の色を指定します。デフォルトは現在の文字色(currentColor)
+  --------------------------------------------------------------*/
+  @mixin triangle($direction, $width, $height, $color: currentColor) {
+    // 定義されている方向が指定されている、もしくは方向が指定されていなかったらエラーを返す
+    @if not index(upward rightward downward leftward upper-left upper-right lower-right lower-left, $direction) {
+      @error 'triangle()の方向は"upward","rightward","downward","leftward","upper-left","upper-right","lower-right","lower-left"から指定してください';
+    }
+    
+    height: 0;width: 0;
+    border-style: solid;
+
+    @if $direction == upward {
+      border-color: transparent transparent $color transparent;
+      border-width: 0 math.div($width , 2) $height math.div($width , 2);
+    }
+
+    @if $direction == rightward {
+      border-color: transparent transparent transparent $color;
+      border-width: math.div($height , 2) 0 math.div($height , 2) $width;
+    }
+
+    @if $direction == downward {
+      border-color: $color transparent transparent transparent;
+      border-width: $height math.div($width , 2) 0 math.div($width , 2);
+    }
+
+    @if $direction == leftward {
+      border-color: transparent $color transparent transparent;
+      border-width: math.div($height , 2) $width math.div($height , 2) 0;
+    }
+
+    @if $direction == upper-left {
+      border-color: $color transparent transparent transparent;
+      border-width: $height $height 0 0;
+    }
+
+    @if $direction == upper-right {
+      border-color: transparent $color transparent transparent;
+      border-width: 0 $height $height 0;
+    }
+
+    @if $direction == lower-right {
+      border-color: transparent transparent $color transparent;
+      border-width: 0 0 $height $height;
+    }
+
+    @if $direction == lower-left {
+      border-color: transparent transparent transparent $color;
+      border-width: $height 0 0 $height;
+    }
+  }

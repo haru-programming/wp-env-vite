@@ -1,0 +1,42 @@
+// ==========================================================================
+// mixin 
+// updated --- 2023/01/17 01:03:39
+// ==========================================================================
+
+  /* ------------------------------------------------------------
+   * @mixin：lineHeightCrop
+   * 
+   * line-heightの不要な余白を打ち消す
+  --------------------------------------------------------------*/
+  @mixin lineHeightCrop($line-height, $capital-letter-top: 1, $capital-letter-bottom: 1) {
+    line-height: $line-height;
+    &::before {
+      display: block;content: '';
+      width: 0;height: 0;
+      margin-top: calc((#{$capital-letter-top} - #{$line-height}) * .5em);
+    }
+    &::after {
+      display: block;content: '';
+      width: 0;height: 0;
+      margin-bottom: calc((#{$capital-letter-bottom} - #{$line-height}) * .5em);
+    }
+  }
+
+  /* ------------------------------------------------------------
+   * vertical
+  --------------------------------------------------------------*/
+  @mixin lineHeightCropVertical($line-height, $capital-letter-top: 1, $capital-letter-bottom: 1) {
+    line-height: $line-height;
+    &::before {
+      display: block;content: '';
+      width: 0;height: 0;
+      margin-top: 0;
+      margin-left: calc((#{$capital-letter-top} - #{$line-height}) * .5em);
+    }
+    &::after {
+      display: block;content: '';
+      width: 0;height: 0;
+      margin-bottom: 0;
+      margin-right: calc((#{$capital-letter-bottom} - #{$line-height}) * .5em);
+    }
+  }

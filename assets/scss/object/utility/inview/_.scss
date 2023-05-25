@@ -1,0 +1,137 @@
+// ==========================================================================
+// u-inview
+// ==========================================================================
+@use "../../../foundation/global";
+
+	// -----------------------------------------------------------------
+	// u-inview
+	// -----------------------------------------------------------------
+	.u-inview{
+
+		opacity: 0;
+
+		//transition: transform 0.1s global.ease(easeTrans1) 0s ,opacity 0.1s global.ease(easeTrans1) 0s;
+		
+		&.is-visible{
+			transition: transform 1.0s global.ease(easeTrans1) 0s ,opacity 1.0s global.ease(easeTrans1) 0s;
+			// transition: transform 1.2s global.ease(easeTrans1) 0s ,opacity 1.2s global.ease(easeTrans1) 0s;
+			transition-delay: 0.1s;
+		}
+
+		&.u-inview--delay1{
+			transition-delay: 0.1s;
+		}
+
+		&.u-inview--delay2{
+			transition-delay: 0.2s;
+		}
+
+		&.u-inview--delay3{
+			transition-delay: 0.3s;
+		}
+
+		&.u-inview--delay4{
+			transition-delay: 0.4s;
+		}
+
+		&.u-inview--delay5{
+			transition-delay: 0.5s;
+		}
+
+
+		// -------------------------------------------------------------
+		// PC 
+		// -------------------------------------------------------------
+		@include global.media-breakpoint-up(md) {
+			//transform: translate3d(0, global.pxrem(30), 0) scale(1, 1);
+			transform: translate3d(0, global.pxrem(20), 0) scale(1, 1);
+
+			&.is-visible{
+				opacity: 1;
+				transform: translate3d(0, 0, 0) scale(1, 1);
+			}
+
+			&.u-inview--pc-delay1{
+				transition-delay: 0.1s;
+			}
+	
+			&.u-inview--pc-delay2{
+				transition-delay: 0.2s;
+			}
+	
+			&.u-inview--pc-delay3{
+				transition-delay: 0.3s;
+			}
+
+			&.u-inview--pc-delay4{
+				transition-delay: 0.4s;
+			}
+
+			&.u-inview--pc-delay5{
+				transition-delay: 0.5s;
+			}
+
+			//
+			&.u-inview--kv{
+				display: inline-block;
+				transition: transform 1.2s global.ease(easeTrans1) 0s ,opacity 1.2s global.ease(easeTrans1) 0s;
+				transform: translate3d(0, global.pxrem(10), 0) scale(1);
+				&.is-visible{
+					opacity: 1;
+					transform: translate3d(0, 0, 0) scale(1);
+				}
+			}
+
+			&.u-inview--delay-pc1{
+				transition-delay: 0.8s;
+			}
+			&.u-inview--delay-pc2{
+				transition-delay: 1.0s;
+			}
+		}
+		
+		
+		// -------------------------------------------------------------
+		// Medium devices
+		// -------------------------------------------------------------
+		@include global.media-breakpoint-only(md) {
+
+		}
+	
+	
+		// -------------------------------------------------------------
+		// SP
+		// -------------------------------------------------------------
+		@include global.media-breakpoint-down(md) {
+			transform: translate3d(0, global.pxvw(20), 0) scale(1, 1);
+			
+
+			&.is-visible{
+				opacity: 1;
+				transform: translate3d(0, 0, 0) scale(1, 1);
+			}
+
+			&.u-inview--kv{
+				display: inline-block;
+				transition: transform 1.2s global.ease(easeTrans1) 0s ,opacity 1.2s global.ease(easeTrans1) 0s;
+				transform: translate3d(0, global.pxvw(15), 0) scale(1);
+				&.is-visible{
+					opacity: 1;
+					transform: translate3d(0, 0, 0) scale(1);
+				}
+			}
+
+			&.u-inview--delay-sp1{
+				transition-delay: 0.8s;
+			}
+			&.u-inview--delay-sp2{
+				transition-delay: 0.9s;
+			}
+			&.u-inview--delay-sp3{
+				transition-delay: 1.0s;
+			}
+			&.u-inview--delay-sp4{
+				transition-delay: 1.1s;
+			}
+		}
+	}

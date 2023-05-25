@@ -1,0 +1,192 @@
+/* ==========================================================================
+ * Inter
+ * https://fonts.google.com/specimen/Inter
+ * 
+ * updated --- 2023/01/17 04:02:55
+ * =========================================================================*/
+@use "../../global";
+
+  /* ------------------------------------------------------------
+  * @mixin：leading-trim-din
+  --------------------------------------------------------------*/
+  @mixin leading-trim-din($line-height:1,$weight:global.$weight-regular){
+
+    border-top: 1px solid global.$border-textwrap;border-bottom: 1px solid global.$border-textwrap;
+    
+    font-family: "din-condensed", sans-serif;
+    font-style: normal;font-weight: $weight;
+
+    $crop-top: 0.76;
+    $crop-bottom: 0.71;
+    @include global.lineHeightCrop($line-height,$crop-top,$crop-bottom);
+  }
+
+
+  /* ------------------------------------------------------------
+  * @mixin：montserrat
+  --------------------------------------------------------------*/
+  @mixin din($lg:(),$md:(),$sm:()){
+    
+    span:not([class]){
+      display: inline-block;
+    }
+
+    // a:not([class]){
+    // 	color: global.$color-blue;
+    // 	text-underline-offset: 1px;
+    
+    // 	transition: text-decoration-color 0.8s global.ease(easeOutSine) 0s;
+    // 	&:hover{
+    // 		text-decoration-color: transparent;
+    // 		transition: text-decoration-color 0.8s global.ease(easeOutExpo) 0s;
+    // 	}
+    // }
+
+
+    // -------------------------------------------------------------
+    // lg：Desktop
+    // -------------------------------------------------------------
+    @if(length($lg)>0){
+      @include global.media-breakpoint-up(md) {
+
+        // display
+        @if(map-has-key($lg, display)){
+          display: map-get($lg, display);
+        }
+        @else{
+          display: block;
+        }
+
+        // font-size
+        @if(map-has-key($lg, text)){
+          font-size: global.pxrem(map-get($lg, text));
+        }
+
+        // leading-trim
+        @if(map-has-key($lg, leading-trim)){
+          @if(map-has-key($lg, weight)){
+            @include leading-trim-din(map-get($lg, leading-trim),map-get($lg, weight));
+          }@else{
+            @include leading-trim-din(map-get($lg, leading-trim));
+          }
+        }
+        @else {
+          // leading *lgがtrimを使用しているときには使用不可
+          @if(map-has-key($lg, leading)){
+            line-height: map-get($lg, leading);
+          }
+          // font-weight
+          @if(map-has-key($lg, weight)){
+            font-family: map-get($lg, weight), sans-serif;
+          }
+        }
+
+        // tracking
+        @if(map-has-key($lg, tracking)){
+          letter-spacing: map-get($lg, tracking);
+        }
+      }
+      
+    }
+    
+    // -------------------------------------------------------------
+    // md：Medium devices
+    // -------------------------------------------------------------
+    @if($md == true){
+      @include global.media-breakpoint-only(md) {
+        // font-size
+        @if(map-has-key($lg, text)){
+          font-size: global.pxvw(map-get($lg, text),map-get(global.$grid-breakpoints,lg));
+        }
+      }
+    }
+    @else if(length($md)>0){
+      @include global.media-breakpoint-only(md) {
+
+        // display
+        @if(map-has-key($md, display)){
+          display: map-get($md, display);
+        }
+        @else{
+          display: block;
+        }
+        
+        // font-size
+        @if(map-has-key($md, text)){
+          font-size: global.pxvw(map-get($md, text),map-get(global.$grid-breakpoints,lg));
+        }
+
+        // leading-trim
+        @if(map-has-key($md, leading-trim)){
+          @if(map-has-key($md, weight)){
+            @include leading-trim-din(map-get($md, leading-trim),map-get($md, weight));
+          }@else{
+            @include leading-trim-din(map-get($md, leading-trim));
+          }
+        }
+        @else{
+          // leading *lgがtrimを使用しているときには使用不可
+          @if(map-has-key($md, leading)){
+            line-height: map-get($md, leading);
+          }
+          // font-weight
+          @if(map-has-key($md, weight)){
+            font-family: map-get($md, weight), sans-serif;
+          }
+        }
+
+        // tracking
+        @if(map-has-key($md, tracking)){
+          letter-spacing: map-get($md, tracking);
+        }
+      }
+    }
+    
+
+    // -------------------------------------------------------------
+    // sm：Mobile
+    // -------------------------------------------------------------
+    @if(length($sm)>0){
+      
+      @include global.media-breakpoint-down(md) {
+
+        // display
+        @if(map-has-key($sm, display)){
+          display: map-get($sm, display);
+        }
+        @else{
+          display: block;
+        }
+
+        // font-size
+        @if(map-has-key($sm, text)){
+          font-size: global.pxvw(map-get($sm, text));
+        }
+
+        // leading-trim
+        @if(map-has-key($sm, leading-trim)){
+          @if(map-has-key($sm, weight)){
+            @include leading-trim-din(map-get($sm, leading-trim),map-get($sm, weight));
+          }@else{
+            @include leading-trim-din(map-get($sm, leading-trim));
+          }
+        }
+        @else{
+          // leading *lgがtrimを使用しているときには使用不可
+          @if(map-has-key($sm, leading)){
+            line-height: map-get($sm, leading);
+          }
+          // font-weight
+          @if(map-has-key($sm, weight)){
+            font-family: map-get($sm, weight), sans-serif;
+          }
+        }
+
+        // tracking
+        @if(map-has-key($sm, tracking)){
+          letter-spacing: map-get($sm, tracking);
+        }
+      }
+    }
+  }
+

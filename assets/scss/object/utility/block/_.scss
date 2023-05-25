@@ -1,0 +1,62 @@
+// ==========================================================================
+// u-blcok
+// ==========================================================================
+@use "../../../foundation/global";
+
+  // -----------------------------------------------------------------
+  // u-block
+  // -----------------------------------------------------------------
+  .u-block{
+    width: 100%;
+    @include global.box-padding(
+      ( lr: #{global.clamp-value(32, 70, 1080, 1280)} ),(),
+      ( lr: 15 )
+    );
+
+    &.u-block--gray{
+      @include global.box-padding(
+        ( top: 68, bottom: 70 ),(),
+        ( lr: 0, top: 30, bottom: 30 )
+      );
+      background-color: global.$bgcolor-gray;
+    }
+
+    .u-block-box{
+      width: 100%;max-width: global.pxrem(1140);//
+      margin-left: auto;margin-right: auto;
+
+      &.u-block-box--small{
+        max-width: global.pxrem(960);
+      }
+    }
+
+    .page-workload &{
+      &.u-block--gray{
+        @include global.box-padding(
+          ( top: 56, bottom: 70 ),(),
+          ()
+        );
+      }
+    }
+
+    
+  // -------------------------------------------------------------
+  // lg：Desktop
+  // -------------------------------------------------------------
+  @include global.media-breakpoint-up(md) {
+  }
+
+
+  // -------------------------------------------------------------
+  // md：Medium devices
+  // -------------------------------------------------------------
+  @include global.media-breakpoint-only(md) {
+  }
+
+
+  // -------------------------------------------------------------
+  // sm：Mobile
+  // -------------------------------------------------------------
+  @include global.media-breakpoint-down(md) {
+  }
+}

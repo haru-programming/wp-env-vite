@@ -1,0 +1,69 @@
+// ==========================================================================
+// p-form
+// ==========================================================================
+@use "../../../foundation/global";
+@use "../../../foundation/font";
+
+  // -----------------------------------------------------------------
+  // p-form-contact
+  // -----------------------------------------------------------------
+  .p-form-contact{
+
+    width: 100%;
+
+    .p-form-contact__btn{
+      background-color: global.$color-white;
+    }
+
+
+    // -------------------------------------------------------------
+    // lg：Desktop
+    // -------------------------------------------------------------
+    @include global.media-breakpoint-up(md) {
+      .p-form-contact__item{
+        & + .p-form-contact__item{
+          margin-top: global.pxvw(16,1280);
+        }
+  
+        &:last-child{
+          margin-top: global.pxvw(20,1280);
+        }
+      }
+          
+      .p-form-contact__btn{
+        margin-top: global.pxvw(40,1280);
+        border-radius: global.pxvw(80,1280);
+      }
+  
+      .c-form-text{
+        max-width: global.pxper(669,1004);
+      }
+    }
+
+
+    // -------------------------------------------------------------
+    // md：Medium devices
+    // -------------------------------------------------------------
+    @include global.media-breakpoint-only(md) {
+    }
+
+    // -------------------------------------------------------------
+    // sm：Mobile
+    // -------------------------------------------------------------
+    @include global.media-breakpoint-down(md) {
+      .p-form-contact__item{
+        & + .p-form-contact__item{
+          margin-top: global.pxvw(15);
+        }
+
+        &:last-child{
+          margin-top: global.pxvw(21);
+        }
+      }
+
+      .p-form-contact__btn{
+        margin-top: global.pxvw(20);
+        border-radius: global.pxvw(50);
+      }
+    }
+  }

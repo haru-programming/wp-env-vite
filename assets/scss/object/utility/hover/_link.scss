@@ -1,0 +1,47 @@
+// ==========================================================================
+// u-hover
+// ==========================================================================
+@use "../../../foundation/global";
+
+  // -----------------------------------------------------------------
+  // u-hover-link
+  // -----------------------------------------------------------------
+  .u-hover-link{
+
+    color: currentColor;
+    text-decoration: underline;
+    text-decoration-color: currentColor;
+    
+    // transition: opacity 1.2s global.ease(easeOutExpo) 0s,text-decoration-color 1.2s global.ease(easeOutExpo) 0s;
+    transition: text-decoration-color 1.2s global.ease(easeOutExpo) 0s;
+    @include global.hover() {
+      // opacity: 0.6;
+      text-decoration-color: transparent;
+    }
+
+
+    // -------------------------------------------------------------
+    // PC 
+    // -------------------------------------------------------------
+    @include global.media-breakpoint-up(md) {
+      text-underline-offset: global.pxrem(2);
+      text-decoration-thickness: global.pxrem(0.5);
+    }
+
+
+    // -------------------------------------------------------------
+    // Medium devices
+    // -------------------------------------------------------------
+    @include global.media-breakpoint-only(md) {
+
+    }
+
+
+    // -------------------------------------------------------------
+    // SP
+    // -------------------------------------------------------------
+    @include global.media-breakpoint-down(md) {
+      text-underline-offset: global.pxvw(4);
+      text-decoration-thickness: global.pxrem(1);
+    }
+  }

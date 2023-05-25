@@ -1,0 +1,87 @@
+@charset "utf-8";
+/*
+ * updated --- 2023/04/13 11:13:11
+*/
+
+// ==========================================================================
+//   Foundation
+// ==========================================================================
+@use "foundation/reset";
+@use "foundation/base";
+
+// ==========================================================================
+// Layout
+// ==========================================================================
+@use "layout/content" as l-content;
+@use "layout/footer" as l-footer;
+@use "layout/header" as l-header;
+
+
+// ==========================================================================
+// library
+// ==========================================================================
+// @use "library/splide-core" as lib-splide-core;
+
+
+// ==========================================================================
+// Object
+// ==========================================================================
+
+  // -----------------------------------------------------------------
+  // Utility
+  // -----------------------------------------------------------------
+//   @use "object/utility/block/_" as u-block;
+
+//   @use "object/utility/box/margin" as u-box-margin;
+//   @use "object/utility/box/padding" as u-box-padding;
+
+  @use "object/utility/grid/_" as u-grid;
+
+//   @use "object/utility/hover/link" as u-hover-link;
+
+//   @use "object/utility/icon/_" as u-icon;
+
+  @use "object/utility/inview/_" as u-inview;
+
+
+  // -----------------------------------------------------------------
+  // Component
+  // -----------------------------------------------------------------
+  // @use "object/component/btn/oval" as c-btn-oval;
+
+  // @use "object/component/card/_" as c-card;
+
+  // @use "object/component/form/btn" as c-form-btn;
+  // @use "object/component/form/text" as c-form-text;
+  // @use "object/component/form/textarea" as c-form-textarea;
+
+  // @use "object/component/heading/_" as c-heading;
+
+  // @use "object/component/list/detail" as c-list-detail;
+
+  // @use "object/component/media/_" as c-media;
+  // @use "object/component/media/icon" as c-media-icon;
+
+  @use "object/component/text/_" as c-text;
+  // @use "object/component/text/box" as c-text-box;
+  // @use "object/component/text/vertical" as c-text-vertical;
+
+
+  // -----------------------------------------------------------------
+  // Project
+  // -----------------------------------------------------------------
+
+  // @use "object/project/content/company" as p-content-company;
+  // @use "object/project/content/contact" as p-content-contact;
+  // @use "object/project/content/faq" as p-content-faq;
+  // @use "object/project/content/flow" as p-content-flow;
+  // @use "object/project/content/member" as p-content-member;
+  // @use "object/project/content/point" as p-content-point;
+  // @use "object/project/content/service" as p-content-service;
+
+  @use "object/project/form/contact" as p-form-contact;
+
+  // @use "object/project/list/faq" as p-list-faq;
+
+  // @use "object/project/media/kv" as p-media-kv;
+  // @use "object/project/media/service" as p-media-service;

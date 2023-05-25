@@ -1,0 +1,175 @@
+// ==========================================================================
+// layout
+// ==========================================================================
+@use "../foundation/global";
+@use "../foundation/font";
+
+	// -----------------------------------------------------------------
+  // l-footer
+  // -----------------------------------------------------------------
+  .l-footer{
+    
+    position :relative;z-index: global.z(footer);
+    background-color: global.$color-black;
+
+    .l-footer__copyright{
+      display: flex;align-items: center;justify-content: flex-end;
+      color: global.$color-white;
+    }
+
+    .l-footer__copyright-icon{
+      @include font.din(
+        ( leading-trim: 1.2, tracking: 0.1em), (),
+        ( text: 15, leading-trim: 1.2, tracking: 0.1em)
+      );
+    }
+
+    .l-footer__copyright-text{
+      @include font.din(
+        ( leading-trim: 1.2, tracking: 0.07em), (),
+        ( text: 12, leading-trim: 1.2, tracking: 0.07em)
+      );
+    }
+
+    .l-footer__pagetop{
+      position: absolute;
+      overflow: hidden;
+
+      a:not([class]){
+        text-decoration: none;
+      }
+
+      .c-text-vertical{
+        &:before{
+          will-change: transform;
+          transition: transform 0.5s global.ease(easeOutExpo) 0s;
+        }
+      }
+
+      .c-text-vertical__text-animation {
+        display: flex;
+
+        span:not([class]){
+          display: block;
+          backface-visibility: hidden;
+          transform: translateX(0);
+          transition: transform 0.3s ease;
+
+          $i: 1;
+          @while $i < 12 {
+            &:nth-child(#{$i}) {
+              transition-delay: $i / 30 + s;
+            }
+            $i: $i + 1;
+          }
+        }
+      }
+  
+    }
+
+
+    // -------------------------------------------------------------
+    // lg：Desktop
+    // -------------------------------------------------------------
+    @include global.media-breakpoint-up(md) {
+      padding: global.pxvw(527,1280) global.pxvw(46,1280) global.pxvw(52,1280) 0;
+      
+      .l-footer__copyright-icon{
+        margin-bottom: global.pxvw(-5,1280);
+        font-size: global.pxvw(22,1280);
+      }
+
+      .l-footer__copyright-text{
+        font-size: max(global.pxvw(18,1280),global.pxrem(12));
+      }
+
+      .l-footer__pagetop{
+        width: global.pxvw(15,1280);
+        top: global.pxvw(101,1280);left: global.pxvw(66,1280);
+
+        a:not([class]){
+          @include global.hover() {
+            span:not([class]){
+              transform: translateX(global.pxvw(16,1280));
+            }
+            .c-text-vertical{
+              &:before{
+                transform: translateY(global.pxvw(4,1280));
+              }
+            }
+          }
+        }
+      }
+
+      .c-text-vertical{
+        &:before{
+          margin-right: global.pxvw(-15,1280);
+        }
+      }
+    }
+
+
+    // -------------------------------------------------------------
+    // md：Medium devices
+    // -------------------------------------------------------------
+    @include global.media-breakpoint-only(md) {
+      .l-footer__pagetop{
+        width: global.pxrem(13);
+
+        a:not([class]){
+          @include global.hover() {
+            span:not([class]){
+              transform: translateX(global.pxrem(13));
+            }
+            .c-text-vertical{
+              &:before{
+                transform: translateY(global.pxrem(4));
+              }
+            }
+          }
+        }
+      }
+
+      .c-text-vertical{
+        &:before{
+          margin-right: global.pxrem(-13);
+        }
+      }
+    }
+
+
+    // -------------------------------------------------------------
+    // sm：Mobile
+    // -------------------------------------------------------------
+    @include global.media-breakpoint-down(md) {
+      padding: global.pxvw(208) global.pxvw(30) global.pxvw(38) 0;
+      
+      .l-footer__copyright-icon{
+        margin-bottom: global.pxvw(-5);
+      }
+
+      .l-footer__pagetop{
+        width: global.pxvw(12);
+        top: global.pxvw(46);left: global.pxvw(5);
+
+        a:not([class]){
+          @include global.hover() {
+            span:not([class]){
+              transform: translateX(global.pxvw(12));
+            }
+            .c-text-vertical{
+              &:before{
+                transform: translateY(global.pxvw(4));
+              }
+            }
+          }
+        }
+      }
+
+      .c-text-vertical{
+        &:before{
+          margin-right: global.pxvw(-13);
+        }
+      }
+    }
+  }

@@ -1,0 +1,140 @@
+// ==========================================================================
+// u-box
+// ==========================================================================
+@use "../../../foundation/global";
+
+  // -----------------------------------------------------------------
+  // u-margin ※ 簡易化のためにboxを省略
+  // -----------------------------------------------------------------
+  .u-margin,.u-margin-normal{
+    @include global.box-margin(
+      (top: 40), (),
+      (top: 30)
+    )
+  }
+
+  .u-margin-zero{
+    margin-top: 0;
+  }
+
+  .u-margin-lr{
+    width: fit-content;
+    margin-left: auto;margin-right: auto;
+  }
+
+  .u-margin-xxs{
+    @include global.box-margin(
+      (top: 32), (),
+      (top: 22)
+    )
+  }
+  
+  .u-margin-xs{
+    @include global.box-margin(
+      (top: 32), (),
+      (top: 28)
+    )
+  }
+
+  .u-margin-s{
+    @include global.box-margin(
+      (top: 32), (),
+      (top: 32)
+    )
+  }
+
+  .u-margin-sm{
+    @include global.box-margin(
+      (top: 50), (),
+      (top: 40)
+    )
+  }
+  
+  .u-margin-m{
+    @include global.box-margin(
+      (top: 60), (),
+      (top: 35)
+    )
+  }
+
+  .u-margin-l{
+    @include global.box-margin(
+      (top: 70), (),
+      (top: 60)
+    )
+  }
+
+  .u-margin-sl{
+    @include global.box-margin(
+      (top: 70), (),
+      (top: 55)
+    )
+  }
+
+  .u-margin-sp-s{
+    @include global.box-margin(
+      (), (),
+      (top: 38)
+    )
+  }
+
+  .u-margin-sp-m{
+    @include global.box-margin(
+      (), (),
+      (top: 48)
+    )
+  }
+
+  .u-margin-sp-l{
+    @include global.box-margin(
+      (), (),
+      (top: 56)
+    )
+  }
+
+
+  // -------------------------------------------------------------
+  // lg：Desktop
+  // -------------------------------------------------------------
+  @include global.media-breakpoint-up(md) {
+    .lg{
+      /* 100 */
+      &\:u-margin-\[100\]{
+        margin-top: global.pxrem(100);
+      }
+    }
+  }
+
+
+  // -------------------------------------------------------------
+  // md：Medium devices
+  // -------------------------------------------------------------
+  @include global.media-breakpoint-only(md) {
+
+    .md{
+      /* 100 */
+      // &\:u-margin-\[100\]{
+      //   margin-top: global.pxrem(100);
+      // }
+    }
+
+    .lg{
+      /* 100 */
+      &\:u-margin-\[100\]{
+        margin-top: global.pxvw(100,map-get(global.$grid-breakpoints,lg));
+      }
+    }
+  }
+
+
+  // -------------------------------------------------------------
+  // sm：Mobile
+  // -------------------------------------------------------------
+  @include global.media-breakpoint-down(md) {
+    .sm{
+      /* 200 */
+      &\:u-margin-\[200\]{
+        margin-top: global.pxvw(200);
+      }
+    }
+  }
