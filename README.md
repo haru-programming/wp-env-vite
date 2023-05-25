@@ -6,4 +6,5 @@ Vite for WordPress (Docker + wp-env)
 - environment : Docker + wp-env
 - mapping .wp-env > themes to root in this project
 - entry-point : app.js
+- Not yet screenshot.png and favicon
 - wip: functions.php
